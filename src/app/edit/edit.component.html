@@ -1,0 +1,23 @@
+<ion-card>
+  <div>
+    <ion-card-header>
+      <ion-card-title style="color: #2dd36f;">Votre compte</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+            <div>
+              <form #f="ngForm" (ngSubmit)="edit(f)">
+                <ion-item>
+                  <ion-label position="floating">{{type}}</ion-label>
+                  <ion-input type="test" name="nom" ngModel #nom="ngModel" [value]="name"></ion-input>
+                </ion-item>
+                <div class="btn">
+                  <ion-button color="success" type="submit" >Enregistrer</ion-button>
+                  <ion-button color="success" (click)="cancel()">Annuler</ion-button>
+                </div>
+              </form>
+            </div>
+            
+    </ion-card-content>
+  </div>
+</ion-card>

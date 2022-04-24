@@ -8,10 +8,22 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        path: 'formation',
+        children : [
+          {
+            path : '',
+            loadChildren: () => import('../pages/formation/formation.module').then(m => m.FormationPageModule)
+          },
+          {
+            path: 'home/tabs/detail/:id',
+            loadChildren: () => import('../pages/detail-formation/detail-formation.module').then( m => m.DetailFormationPageModule)
+          },
+        ]
       },
       {
+        path: 'tab2/:id',
+        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+      },{
         path: 'tab2',
         loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
       },

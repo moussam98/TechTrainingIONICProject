@@ -1,17 +1,41 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Cours
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div *ngIf="!idFormationSession" class="flex-center">
+    <div style="text-align: center;">
+      <h3 style="color:#2dd36f"> Aucune formation commencer !</h3>
+      <h6 >Veuillez consulter votre profile pour choisir une formation.</h6>
+    </div>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  </div>
+
+  <ion-card class="flex-center" *ngIf="formation">
+    <div>
+      <ion-card-header>
+        <ion-card-title style="color:#2dd36f; font-weight: bold; text-align: center;">{{formation.name}}</ion-card-title>
+        <ion-card-subtitle><span style="color: #2dd36f; font-weight: bold;">Chapitre 1 :</span> Introduction</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+          Doloremque earum tempora non commodi nobis, autem quidem amet ipsa suscipit 
+          at dolores eum, ad illum eveniet. Sunt deserunt nostrum reiciendis a?
+        </p>
+            
+        <div class="btn">
+          <ion-button color="success" > <ion-icon name="chevron-back-outline"></ion-icon> Precedent</ion-button>
+          <ion-button color="success" > Suivant <ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
+        </div>
+             
+      </ion-card-content>
+    </div>
+  </ion-card>
 </ion-content>

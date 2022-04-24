@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>formation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="liste">
+    
+     <ion-card>
+      <ion-card-header>
+        <ion-label position="inline">
+          <h2 style="font-weight: bold; color: #2dd36f;" >Bienvenu à votre plateforme de formation en ligne</h2>
+          <h3 style="font-weight: bold;">Nous sommes très heureux de vous comptez parmis nous !</h3>
+          <h4>Ci-dessous une liste de formation que nous offrons  : </h4>
+        </ion-label>
+        <ion-card-title>Liste formation </ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+          <ion-list >
+            <div *ngFor="let formation of liste">
+                <ion-item button detail (click)="openModal(formation.id)">
+                <ion-thumbnail class="ion-margin-end" >
+                  <ion-img [src]="formation.iconURL"></ion-img>
+                </ion-thumbnail>
+                <ion-label class="ion-no-padding-left">{{formation.name}}</ion-label>
+              </ion-item>
+            </div>
+          </ion-list>
+      </ion-card-content>
+    </ion-card>
+  
+  </div>
+ 
+  <div *ngIf="!liste">
+    <h3 style="text-align: center; color:#2dd36f"> Veuillez patientez...</h3>
+  </div>
+</ion-content>

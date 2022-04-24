@@ -1,0 +1,30 @@
+<ion-content >
+  <div *ngIf="!liste">
+    <ion-card>
+      <ion-card-content>
+        <p style="text-align: center; color: #2dd36f;">Veuillez patientez...</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="flex-center" *ngIf="liste">
+    <ion-card >
+      <ion-card-header>
+        <ion-card-title color="success" style="text-align: center;">{{formation.name}}</ion-card-title>
+        <ion-img [src]="formation.imgURL" class="ion-margin-top imgCustom"></ion-img>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <p><span style="font-weight: bold;" color="success">Description : </span> {{formation.description}} </p>
+        <p><span style="font-weight: bold;" color="success">Prix : </span> {{formation.price}} Dhs</p>
+        <p><span style="font-weight: bold;" color="success">Duree de la formation : </span> {{formation.period}} heures</p>
+  
+        <div class="btn">
+          <ion-button color="success" shape="round" (click)="add()" >Ajouter</ion-button>
+          <ion-button color="success" shape="round" (click)="cancel()">Annuler</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  
+</ion-content>

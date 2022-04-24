@@ -1,17 +1,60 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Profile
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div>
+    <ion-card  >
+      <ion-card-header>
+        <ion-card-title>Votre compte</ion-card-title>
+      </ion-card-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+      <div *ngIf="!user">
+        <h3 style="text-align: center; color:#2dd36f"> Veuillez patientez...</h3>
+      </div>
+    
+      <ion-card-content *ngIf="user" >
+         <div>
+           <ion-list>
+              <ion-item>
+                  <ion-label>
+                    <p>Nom  </p>
+                    <span>{{user.lastName}}</span>
+                  </ion-label>
+                  <ion-button color="success" shape="round" size="small" (click)="edit('lastName')">Modifier</ion-button>
+
+              </ion-item>
+
+              <ion-item>
+                <ion-label>
+                  <p>Prenom  </p>
+                  <span>{{user.firstName}}</span>
+                </ion-label>
+                <ion-button color="success" shape="round" size="small" slot="end" (click)="edit('firstName')">Modifier</ion-button>
+              </ion-item>
+          </ion-list>
+          
+          <ion-label>Liste de vos formation </ion-label>
+          <ion-item *ngIf="isEmpty">
+            <ion-label>Liste vide ! </ion-label>
+          </ion-item>
+          <ion-list>
+            <div *ngFor="let formation of liste">
+              <ion-item button detail (click)="startTraining(formation.id)">
+                <ion-thumbnail class="ion-margin-end" >
+                  <ion-img [src]="formation.iconURL"></ion-img>
+                </ion-thumbnail>
+                <ion-label >{{formation.name}}</ion-label>
+              </ion-item>
+            </div>
+          </ion-list>
+          <ion-button color="success" shape="round" expand="block" (click)="signOut()">Se deconnecter</ion-button>
+         </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
